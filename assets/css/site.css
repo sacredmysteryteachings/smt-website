@@ -143,7 +143,8 @@ p{margin:0}
 .about{text-align:center}
 .about .wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
 .about h2{font-size:clamp(1.6rem,3.4vw,2rem)}
-.about p{max-width:640px;font-size:1.2rem}
+.story{max-width:640px;text-align:left;display:flex;flex-direction:column;gap:18px;font-size:1.2rem}
+.story p:first-child::first-letter{font-family:var(--display);color:var(--gold);font-size:3.2em;float:left;line-height:.9;padding:6px 10px 0 0}
 
 /* ---------- Footer ---------- */
 .site-footer{position:relative;padding:44px 0 52px;text-align:center;color:var(--muted);font-size:1rem}
