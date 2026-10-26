@@ -57,13 +57,13 @@ document.querySelectorAll('.video[data-video-id]').forEach(function (box) {
     w = r.width; h = r.height;
     canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var n = Math.round((w * h) / 9000);
+    var n = Math.round((w * h) / 6500);
     stars = [];
     for (var i = 0; i < n; i++) {
       stars.push({
         x: Math.random() * w, y: Math.random() * h,
-        r: 0.4 + Math.random() * 1.1,
-        a: 0.25 + Math.random() * 0.55,
+        r: 0.5 + Math.random() * 1.3,
+        a: 0.35 + Math.random() * 0.6,
         p: Math.random() * Math.PI * 2,
         s: 0.6 + Math.random() * 1.2,
         vx: (Math.random() - 0.5) * 0.015,
