@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sacredmysteryteachings.com/sitemap.xml
