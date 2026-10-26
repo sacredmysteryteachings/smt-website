@@ -127,7 +127,7 @@ p{margin:0}
 .front{background:#0B0906;border:1px solid rgba(217,180,90,.55);box-shadow:inset 0 0 0 6px #0B0906,inset 0 0 0 7px rgba(217,180,90,.35);transition:box-shadow .25s ease-out,border-color .25s ease-out}
 .back{transform:rotateY(180deg);background:radial-gradient(circle at 50% 30%,#1C170D,#0B0906 75%);border:1px solid var(--gold)}
 .numeral{font-family:var(--display);font-size:.9rem;letter-spacing:.22em;color:var(--muted)}
-.card .glyph{width:72px;height:72px}
+.card .glyph{width:104px;height:104px}
 .card-name{font-family:var(--display);font-size:1.12rem;letter-spacing:.08em;color:var(--gold)}
 .hint{font-family:var(--display);font-size:.7rem;letter-spacing:.2em;color:var(--muted)}
 .back-text{display:block;font-size:1.06rem;line-height:1.45;color:var(--pale)}
