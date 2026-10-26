@@ -146,7 +146,7 @@ p{margin:0}
 .site-footer{position:relative;padding:44px 0 52px;text-align:center;color:var(--muted);font-size:1rem}
 .site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
 .site-footer .wrap{display:flex;flex-direction:column;align-items:center;gap:16px}
-.site-footer img{width:220px}
+.site-footer img{width:300px}
 .footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 22px;font-family:var(--display);font-size:.8rem;letter-spacing:.14em}
 .footer-nav a{text-decoration:none;padding:12px 0;min-height:44px;display:inline-flex;align-items:center}
 .legal-nav a{color:var(--muted)}
