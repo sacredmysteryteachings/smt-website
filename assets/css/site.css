@@ -1,0 +1,203 @@
+/* Sacred Mystery Teachings — site styles
+   Direction A "Temple at Night" with tap-to-flip topic cards.
+   Colors from the brand guide (10/25/2026). Gold on black only. */
+
+@font-face{font-family:"Cinzel";src:url(/assets/fonts/cinzel-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Cinzel";src:url(/assets/fonts/cinzel-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Cinzel";src:url(/assets/fonts/cinzel-latin-600-normal.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url(/assets/fonts/eb-garamond-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url(/assets/fonts/eb-garamond-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"EB Garamond";src:url(/assets/fonts/eb-garamond-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+
+:root{
+  --gold:#D9B45A;      /* names, ring, headings — 10.6:1 on black */
+  --gold-hi:#F0D38A;   /* hover */
+  --muted:#A69267;     /* small print, labels — 6.9:1 */
+  --pale:#C9BD9B;      /* body text — 11.2:1 */
+  --black:#000;
+  --glow:#18140C;      /* soft background glow */
+  --line:rgba(217,180,90,.3);
+  --display:"Cinzel",Georgia,serif;
+  --body:"EB Garamond",Georgia,"Times New Roman",serif;
+  --ease-out:cubic-bezier(.2,.7,.2,1);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--black);color:var(--pale);
+  font-family:var(--body);font-size:1.1875rem;line-height:1.65;
+  background-image:radial-gradient(ellipse 90% 60% at 50% 0%,#1E180D 0%,#0A0805 45%,#000 80%);
+  background-repeat:no-repeat;
+}
+img,svg{display:block;max-width:100%;height:auto}
+a{color:var(--gold);text-underline-offset:.18em;text-decoration-thickness:1px}
+a:hover{color:var(--gold-hi)}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:2px}
+h1,h2,h3{font-family:var(--display);font-weight:500;color:var(--gold);letter-spacing:.05em;line-height:1.2;margin:0}
+p{margin:0}
+
+.skip{position:absolute;left:-9999px;top:8px;z-index:10;background:var(--gold);color:#000;padding:10px 16px;border-radius:4px;font-family:var(--display);text-decoration:none}
+.skip:focus{left:16px}
+
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.narrow{max-width:760px}
+
+/* ---------- Header ---------- */
+.site-header{position:relative}
+.site-header .wrap{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
+.brand img{width:44px;height:44px}
+.brand span{font-family:var(--display);font-size:1rem;letter-spacing:.12em;color:var(--gold)}
+.nav{display:flex;flex-wrap:wrap;gap:4px 22px;align-items:center;font-family:var(--display);font-size:.875rem;letter-spacing:.12em}
+.nav a{text-decoration:none;padding:12px 0;min-height:44px;display:inline-flex;align-items:center}
+.nav a.btn{padding:10px 18px}
+.site-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:14px 26px;border-radius:4px;
+  font-family:var(--display);font-weight:500;font-size:.9rem;letter-spacing:.12em;text-decoration:none;cursor:pointer;
+  border:1px solid var(--gold);color:var(--gold);background:transparent;
+  transition:background-color .2s ease-out,box-shadow .2s ease-out,color .2s ease-out}
+.btn-solid{background:var(--gold);color:#000;font-weight:600}
+.btn-sm{min-height:44px;padding:10px 18px;font-size:.82rem}
+@media (hover:hover){
+  .btn:hover{background-color:rgba(217,180,90,.14);box-shadow:0 0 24px rgba(217,180,90,.22);color:var(--gold-hi)}
+  .btn-solid:hover{background-color:#E6C574;color:#000;box-shadow:0 0 28px rgba(217,180,90,.35)}
+}
+
+/* ---------- Ornaments: fading hairline and diamond rule ---------- */
+.hairline{height:1px;width:min(220px,60%);margin:0 auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.diamond-rule{display:flex;align-items:center;gap:12px;width:min(320px,80%);margin:0 auto;color:var(--gold)}
+.diamond-rule::before,.diamond-rule::after{content:"";flex:1;height:1px}
+.diamond-rule::before{background:linear-gradient(90deg,transparent,var(--gold))}
+.diamond-rule::after{background:linear-gradient(90deg,var(--gold),transparent)}
+.diamond-rule i{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex:none}
+
+/* ---------- Hero ---------- */
+.hero{text-align:center;padding:64px 0 88px}
+.hero .wrap{display:flex;flex-direction:column;align-items:center;gap:22px;max-width:900px}
+.hero-emblem{width:clamp(160px,30vw,220px);height:auto;aspect-ratio:1}
+.hero h1{font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.15;letter-spacing:.04em;margin-top:6px}
+.tagline{font-family:var(--display);font-size:1.05rem;letter-spacing:.14em;color:var(--pale)}
+.lede{max-width:620px;font-size:1.3rem;color:var(--pale)}
+.actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:8px}
+
+/* ---------- Sections ---------- */
+.section{padding:0 0 104px}
+.section-title{text-align:center;font-size:clamp(1.6rem,3.4vw,2.1rem);margin-bottom:14px}
+.section-sub{text-align:center;color:var(--muted);font-style:italic;margin-bottom:36px}
+.section-head{display:flex;flex-direction:column;gap:14px;margin-bottom:36px}
+.section-head .section-sub{margin:0}
+
+/* ---------- Video ---------- */
+.video{position:relative;aspect-ratio:16/9;border:1px solid rgba(217,180,90,.35);border-radius:6px;overflow:hidden;
+  background:radial-gradient(circle at 50% 45%,#1A150C,#050403 70%)}
+.video-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center}
+.video-face img.thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+.video-play{position:relative;width:84px;height:84px;border-radius:50%;border:1px solid var(--gold);background:rgba(0,0,0,.55);color:var(--gold);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background-color .2s ease-out,box-shadow .2s ease-out}
+@media (hover:hover){.video-play:hover{background:rgba(217,180,90,.16);box-shadow:0 0 28px rgba(217,180,90,.3)}}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-soon .eyebrow{font-family:var(--display);font-size:.8rem;letter-spacing:.22em;color:var(--muted)}
+.video-soon h3{font-size:clamp(1.25rem,3vw,1.75rem)}
+.video-soon p{max-width:520px}
+.video-meta{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:16px;font-size:1.05rem}
+
+/* ---------- Follow box (stands in for the email signup until the email tool exists) ---------- */
+.callout{text-align:center;padding:44px 28px;position:relative}
+.callout::before,.callout::after{content:"";position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(217,180,90,.55),transparent)}
+.callout::before{top:0}.callout::after{bottom:0}
+.callout h2{font-size:1.75rem;margin-bottom:10px}
+.callout p{margin:0 auto 24px;max-width:560px}
+
+/* ---------- Flip cards ---------- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:760px;margin:0 auto}
+@media (min-width:1040px){.cards{grid-template-columns:repeat(6,1fr);max-width:1110px;gap:18px}}
+.card{perspective:1200px;background:none;border:0;padding:0;margin:0;cursor:pointer;font:inherit;color:inherit;text-align:center;
+  width:100%;aspect-ratio:2/3.3;-webkit-tap-highlight-color:transparent}
+.card-inner{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s var(--ease-out)}
+.card[aria-pressed="true"] .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:10px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px 16px}
+.front{background:#0B0906;border:1px solid rgba(217,180,90,.55);box-shadow:inset 0 0 0 6px #0B0906,inset 0 0 0 7px rgba(217,180,90,.35);transition:box-shadow .25s ease-out,border-color .25s ease-out}
+.back{transform:rotateY(180deg);background:radial-gradient(circle at 50% 30%,#1C170D,#0B0906 75%);border:1px solid var(--gold)}
+.numeral{font-family:var(--display);font-size:.9rem;letter-spacing:.22em;color:var(--muted)}
+.card .glyph{width:58px;height:58px;color:var(--gold)}
+.card-name{font-family:var(--display);font-size:1.12rem;letter-spacing:.08em;color:var(--gold)}
+.hint{font-family:var(--display);font-size:.7rem;letter-spacing:.2em;color:var(--muted)}
+.back-text{display:block;font-size:1.06rem;line-height:1.45;color:var(--pale)}
+@media (hover:hover){.card:hover .front{border-color:var(--gold);box-shadow:inset 0 0 0 6px #0B0906,inset 0 0 0 7px rgba(217,180,90,.6),0 12px 36px rgba(217,180,90,.12)}}
+.card:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px;border-radius:12px}
+
+.card-name.long{font-size:.92rem;letter-spacing:.03em}
+@media (max-width:640px){.card-name.long{font-size:.8rem;letter-spacing:.02em}}
+.video:has(.video-soon){aspect-ratio:auto;min-height:320px;display:flex}
+.video .video-soon{position:relative;inset:auto;flex:1;padding:40px 20px}
+
+/* ---------- About ---------- */
+.about{text-align:center}
+.about .wrap{display:flex;flex-direction:column;align-items:center;gap:18px}
+.about h2{font-size:clamp(1.6rem,3.4vw,2rem)}
+.about p{max-width:640px;font-size:1.2rem}
+
+/* ---------- Footer ---------- */
+.site-footer{position:relative;padding:44px 0 52px;text-align:center;color:var(--muted);font-size:1rem}
+.site-footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.site-footer .wrap{display:flex;flex-direction:column;align-items:center;gap:16px}
+.site-footer img{width:220px}
+.footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 22px;font-family:var(--display);font-size:.8rem;letter-spacing:.14em}
+.footer-nav a{text-decoration:none;padding:12px 0;min-height:44px;display:inline-flex;align-items:center}
+.legal-nav a{color:var(--muted)}
+.legal-nav a:hover{color:var(--gold)}
+.fine{max-width:640px;font-size:.95rem}
+
+/* ---------- Policy pages ---------- */
+.doc{padding:48px 0 88px}
+.doc h1{font-size:clamp(1.8rem,4.4vw,2.5rem);margin-bottom:12px;text-align:center}
+.doc .hairline{margin-bottom:36px}
+.doc h2{font-size:1.2rem;letter-spacing:.06em;margin:36px 0 10px}
+.doc p,.doc li{color:var(--pale)}
+.doc p{margin:0 0 14px}
+.doc ul,.doc ol{margin:0 0 14px;padding-left:22px}
+.doc li{margin-bottom:8px}
+.doc strong{color:#E4D9BB;font-weight:500}
+.doc .doc-foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
+
+/* ---------- Motion (tasteful, plays once, all off under Reduce Motion) ---------- */
+@keyframes breathe{0%,100%{filter:drop-shadow(0 0 14px rgba(217,180,90,.16))}50%{filter:drop-shadow(0 0 30px rgba(217,180,90,.36))}}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:no-preference){
+  .hero-emblem{animation:breathe 7s ease-in-out infinite}
+  .hero .reveal-now{animation:rise .5s var(--ease-out) both}
+  .hero .reveal-now:nth-child(2){animation-delay:.08s}
+  .hero .reveal-now:nth-child(3){animation-delay:.16s}
+  @supports (animation-timeline:view()){
+    .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
+    .draw{transform-origin:center;animation:draw linear both;animation-timeline:view();animation-range:entry 10% entry 55%}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .card-inner{transition:none}
+  .btn,.video-play,.front{transition:none}
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width:640px){
+  body{font-size:1.125rem}
+  .wrap{padding:0 16px}
+  .site-header .wrap{justify-content:center}
+  .nav{justify-content:center;gap:0 18px}
+  .nav .nav-start{display:none}
+  .brand span{font-size:.92rem}
+  .hero{padding:40px 0 64px}
+  .lede{font-size:1.18rem}
+  .actions .btn{width:100%}
+  .section{padding-bottom:80px}
+  .cards{grid-template-columns:repeat(2,1fr);gap:14px}
+  .card-name{font-size:.98rem}
+  .back-text{display:block;font-size:.98rem}
+  .face{padding:16px 12px}
+}
