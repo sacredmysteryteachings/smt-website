@@ -76,10 +76,25 @@ p{margin:0}
 .diamond-rule i{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex:none}
 
 /* ---------- Hero ---------- */
-.hero{text-align:center;padding:64px 0 88px}
-.hero .wrap{display:flex;flex-direction:column;align-items:center;gap:22px;max-width:900px}
+.hero{text-align:center;padding:64px 0 88px;position:relative;overflow:hidden}
+.hero .wrap{display:flex;flex-direction:column;align-items:center;gap:22px;max-width:900px;position:relative}
+.hero .stars{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.85}
 .hero-emblem{width:clamp(160px,30vw,220px);height:auto;aspect-ratio:1}
 .hero h1{font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.15;letter-spacing:.04em;margin-top:6px}
+/* Laptops: keep both hero buttons above the fold (checked at 1366×768 and 1536×864) */
+@media (min-width:900px) and (max-height:960px){
+  .hero{padding:40px 0 80px}
+  .hero .wrap{gap:16px}
+  .hero-emblem{width:160px}
+  .hero h1{font-size:clamp(2rem,4.4vw,3rem)}
+  .lede{font-size:1.2rem}
+}
+@media (min-width:900px) and (max-height:800px){
+  .hero{padding:28px 0 72px}
+  .hero .wrap{gap:13px}
+  .hero-emblem{width:140px}
+  .hero h1{font-size:clamp(2rem,4vw,2.7rem)}
+}
 .tagline{font-family:var(--display);font-size:1.05rem;letter-spacing:.14em;color:var(--pale)}
 .hero-answer{font-family:var(--display);font-size:clamp(1.5rem,3.2vw,2.1rem);letter-spacing:.08em;color:var(--pale);margin-top:-6px}
 .eyebrow-slogan{font-family:var(--display);font-size:.85rem;letter-spacing:.22em;color:var(--muted);margin-bottom:-8px}
@@ -122,6 +137,10 @@ p{margin:0}
   width:100%;aspect-ratio:2/3.3;-webkit-tap-highlight-color:transparent}
 .card-inner{display:block;position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s var(--ease-out)}
 .card[aria-pressed="true"] .card-inner{transform:rotateY(180deg)}
+/* Desktop only: the card leans toward the mouse (set by site.js as --rx/--ry) */
+@media (hover:hover) and (prefers-reduced-motion:no-preference){
+  .card{transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .18s ease-out;will-change:transform}
+}
 .face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:10px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px 16px}
 .front{background:#0B0906;border:1px solid rgba(217,180,90,.55);box-shadow:inset 0 0 0 6px #0B0906,inset 0 0 0 7px rgba(217,180,90,.35);transition:box-shadow .25s ease-out,border-color .25s ease-out}
@@ -131,6 +150,7 @@ p{margin:0}
 .card-name{font-family:var(--display);font-size:1.12rem;letter-spacing:.08em;color:var(--gold)}
 .hint{font-family:var(--display);font-size:.7rem;letter-spacing:.2em;color:var(--muted)}
 .back-text{display:block;font-size:1.06rem;line-height:1.45;color:var(--pale)}
+.back-note{font-family:var(--display);font-size:.7rem;letter-spacing:.2em;color:var(--muted);margin-top:6px}
 @media (hover:hover){.card:hover .front{border-color:var(--gold);box-shadow:inset 0 0 0 6px #0B0906,inset 0 0 0 7px rgba(217,180,90,.6),0 12px 36px rgba(217,180,90,.12)}}
 .card:focus-visible{outline:2px solid var(--gold-hi);outline-offset:4px;border-radius:12px}
 
@@ -176,8 +196,11 @@ p{margin:0}
 @media (prefers-reduced-motion:no-preference){
   .hero-emblem{animation:breathe 7s ease-in-out infinite}
   .hero .reveal-now{animation:rise .5s var(--ease-out) both}
-  .hero .reveal-now:nth-child(2){animation-delay:.08s}
-  .hero .reveal-now:nth-child(3){animation-delay:.16s}
+  .hero .hero-answer{animation-delay:.1s}
+  .hero .diamond-rule{animation-delay:.2s}
+  .hero .lede{animation-delay:.3s}
+  .hero .welcome{animation-delay:.4s}
+  .hero .actions{animation-delay:.5s}
   @supports (animation-timeline:view()){
     .reveal{animation:rise linear both;animation-timeline:view();animation-range:entry 0% entry 40%}
     .draw{transform-origin:center;animation:draw linear both;animation-timeline:view();animation-range:entry 10% entry 55%}
@@ -197,8 +220,7 @@ p{margin:0}
   .nav .nav-start{display:none}
   .brand span{font-size:.92rem}
   .hero{padding:40px 0 64px}
-  .hero-answer{font-family:var(--display);font-size:clamp(1.5rem,3.2vw,2.1rem);letter-spacing:.08em;color:var(--pale);margin-top:-6px}
-.lede{font-size:1.18rem}
+  .lede{font-size:1.18rem}
   .actions .btn{width:100%}
   .section{padding-bottom:80px}
   .cards{grid-template-columns:repeat(2,1fr);gap:14px}

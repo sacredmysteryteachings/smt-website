@@ -41,3 +41,83 @@ document.querySelectorAll('.video[data-video-id]').forEach(function (box) {
     box.appendChild(f);
   });
 });
+
+// Faint star field behind the hero. Gold-white points that drift very slowly and
+// twinkle. Static under Reduce Motion, paused when the hero is off screen.
+(function () {
+  var canvas = document.querySelector('.hero .stars');
+  if (!canvas || !canvas.getContext) return;
+  var ctx = canvas.getContext('2d');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var stars = [], w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var running = false, raf = 0, t0 = 0;
+
+  function size() {
+    var r = canvas.getBoundingClientRect();
+    w = r.width; h = r.height;
+    canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var n = Math.round((w * h) / 9000);
+    stars = [];
+    for (var i = 0; i < n; i++) {
+      stars.push({
+        x: Math.random() * w, y: Math.random() * h,
+        r: 0.4 + Math.random() * 1.1,
+        a: 0.25 + Math.random() * 0.55,
+        p: Math.random() * Math.PI * 2,
+        s: 0.6 + Math.random() * 1.2,
+        vx: (Math.random() - 0.5) * 0.015,
+        vy: -0.008 - Math.random() * 0.012
+      });
+    }
+  }
+
+  function draw(t) {
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      var tw = reduce ? 1 : 0.7 + 0.3 * Math.sin(t * 0.001 * s.s + s.p);
+      // keep the middle (where the emblem and headline sit) quieter
+      var dx = (s.x - w / 2) / (w / 2), dy = (s.y - h * 0.42) / (h / 2);
+      var fade = Math.min(1, 0.25 + Math.sqrt(dx * dx + dy * dy) * 1.1);
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(240, 220, 160,' + (s.a * tw * fade).toFixed(3) + ')';
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+      if (!reduce) {
+        s.x += s.vx; s.y += s.vy;
+        if (s.y < -2) { s.y = h + 2; s.x = Math.random() * w; }
+        if (s.x < -2) s.x = w + 2; else if (s.x > w + 2) s.x = -2;
+      }
+    }
+  }
+
+  function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
+  function start() { if (running || reduce) return; running = true; raf = requestAnimationFrame(loop); }
+  function stop() { running = false; cancelAnimationFrame(raf); }
+
+  size(); draw(0);
+  if (reduce) return;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (e) { e[0].isIntersecting ? start() : stop(); }).observe(canvas);
+  } else { start(); }
+  var rt; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { size(); draw(0); }, 150); });
+  document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+})();
+
+// Desktop only: topic cards lean toward the mouse (CSS reads --rx/--ry under hover:hover)
+if (window.matchMedia('(hover: hover) and (prefers-reduced-motion: no-preference)').matches) {
+  document.querySelectorAll('.card').forEach(function (card) {
+    card.addEventListener('mousemove', function (e) {
+      var r = card.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.setProperty('--ry', (x * 10).toFixed(2) + 'deg');
+      card.style.setProperty('--rx', (-y * 10).toFixed(2) + 'deg');
+    });
+    card.addEventListener('mouseleave', function () {
+      card.style.setProperty('--ry', '0deg');
+      card.style.setProperty('--rx', '0deg');
+    });
+  });
+}
