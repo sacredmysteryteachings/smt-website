@@ -139,8 +139,8 @@ p{margin:0}
 .signup-input:focus{border-color:var(--gold)}
 .callout .signup-fine{margin:14px auto 0;font-size:.9rem;color:var(--muted)}
 .callout .signup-fine a{color:var(--gold)}
-.callout .signup-credit{margin-top:8px;font-size:.8rem}
-.callout .signup-credit a{color:var(--muted)}
+.fine-credit{font-size:.85rem;color:var(--muted)}
+.fine-credit a{color:var(--muted)}
 
 /* ---------- Flip cards ---------- */
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;max-width:520px;margin:0 auto}
