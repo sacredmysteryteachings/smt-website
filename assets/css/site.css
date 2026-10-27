@@ -199,6 +199,8 @@ p{margin:0}
 .doc ul,.doc ol{margin:0 0 14px;padding-left:22px}
 .doc li{margin-bottom:8px}
 .doc strong{color:#E4D9BB;font-weight:500}
+.doc .summary{margin:0 0 8px;padding:18px 22px 6px;border:1px solid var(--line);border-left:2px solid var(--gold);border-radius:4px;background:rgba(217,180,90,.04)}
+.doc .summary h2{margin-top:0}
 .doc .doc-foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:.95rem;color:var(--muted)}
 
 /* ---------- Motion (tasteful, plays once, all off under Reduce Motion) ---------- */
