@@ -15,6 +15,7 @@
 <meta property="og:image" content="https://sacredmysteryteachings.com/assets/img/share-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Sacred Mystery Teachings emblem, a gold tree in a gold ring, with the name and the line: Tarot, Qabalah, astrology and alchemy, explained plainly.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@SacredMTeaching">
 <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
@@ -23,7 +24,11 @@
 <link rel="preload" href="/assets/fonts/eb-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/site.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Sacred Mystery Teachings","legalName":"Sacred Mystery Teachings LLC","url":"https://sacredmysteryteachings.com/","logo":"https://sacredmysteryteachings.com/assets/img/apple-touch-icon.png","slogan":"Ancient Wisdom, Modern Minds.","sameAs":["https://www.youtube.com/@sacredmysteryteachings","https://www.instagram.com/sacredmysteryteachings","https://www.tiktok.com/@sacredmysteryteachings","https://www.facebook.com/sacredmysteryteachings","https://x.com/SacredMTeaching","https://bsky.app/profile/sacredmteachings.bsky.social"]}
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://sacredmysteryteachings.com/#org","name":"Sacred Mystery Teachings","legalName":"Sacred Mystery Teachings LLC","url":"https://sacredmysteryteachings.com/","logo":{"@type":"ImageObject","url":"https://sacredmysteryteachings.com/assets/img/logo-512.png","width":512,"height":512},"slogan":"Ancient Wisdom, Modern Minds.","founder":{"@id":"https://sacredmysteryteachings.com/#christian"},"sameAs":["https://www.youtube.com/@sacredmysteryteachings","https://www.instagram.com/sacredmysteryteachings","https://www.tiktok.com/@sacredmysteryteachings","https://www.facebook.com/sacredmysteryteachings","https://x.com/SacredMTeaching","https://bsky.app/profile/sacredmteachings.bsky.social"]},
+{"@type":"WebSite","@id":"https://sacredmysteryteachings.com/#website","url":"https://sacredmysteryteachings.com/","name":"Sacred Mystery Teachings","inLanguage":"en-US","publisher":{"@id":"https://sacredmysteryteachings.com/#org"}},
+{"@type":"Person","@id":"https://sacredmysteryteachings.com/#christian","name":"Christian","jobTitle":"Teacher of tarot and the Western mystery tradition","worksFor":{"@id":"https://sacredmysteryteachings.com/#org"},"knowsAbout":["Tarot","Qabalah","Astrology","Alchemy"],"url":"https://sacredmysteryteachings.com/#about","sameAs":["https://www.youtube.com/@sacredmysteryteachings"]}
+]}
 </script>
 </head>
 <body>
@@ -36,10 +41,9 @@
       <span>Sacred Mystery Teachings</span>
     </a>
     <nav class="nav" aria-label="Main">
-      <a class="nav-start" href="#start">Start Here</a>
-      <a href="#topics">Topics</a>
-      <a href="#about">About</a>
-      <a class="btn btn-sm" href="#start">Free Lessons</a>
+      <a class="nav-link" href="#topics">Topics</a>
+      <a class="nav-link" href="#about">About</a>
+      <a class="btn btn-sm" href="#start">Start Here</a>
     </nav>
   </div>
 </header>
@@ -77,9 +81,15 @@
           <p>Chapter 1 of the tarot lessons is being filmed now. The moment it's up, it plays right here.</p>
         </div>
       </div>
-      <div class="video-meta">
-        <span>Free lessons, starting with tarot</span>
-        <a href="https://www.youtube.com/@sacredmysteryteachings" rel="noopener">See the channel</a>
+      <div class="signup-box reveal">
+        <p>Leave your email and I'll let you know the moment the first lesson is live, and send the free tarot cheat sheet when it's ready.</p>
+        <form class="signup" action="https://app.kit.com/forms/10101091/subscriptions" method="post">
+          <label class="sr-only" for="signup-email">Email address</label>
+          <input id="signup-email" class="signup-input" type="email" name="email_address" placeholder="Your email address" autocomplete="email" required>
+          <button class="btn btn-solid" type="submit">Join the list</button>
+        </form>
+        <p class="signup-fine">Free, and you can unsubscribe any time. Prefer video? <a href="https://www.youtube.com/@sacredmysteryteachings?sub_confirmation=1" rel="noopener">Subscribe on YouTube</a>.</p>
+        <p class="signup-fine fine-credit"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" target="_blank" rel="nofollow noopener">Built with Kit</a></p>
       </div>
     </div>
   </section>
@@ -95,13 +105,13 @@
         <button type="button" class="card reveal" aria-pressed="false">
           <span class="card-inner">
             <span class="face front">
-              <span class="numeral">I</span>
+              <span class="numeral" aria-hidden="true">I</span>
               <img class="glyph" src="/assets/img/icon-tarot.svg" alt="" width="64" height="64">
               <span class="card-name">Tarot</span>
-              <span class="hint">Tap to turn</span>
+              <span class="hint" aria-hidden="true">Tap to turn</span>
             </span>
             <span class="face back">
-              <span class="card-name">Tarot</span>
+              <span class="card-name" aria-hidden="true">Tarot</span>
               <span class="back-text">The map. Seventy-eight gates, and every one opens inward.</span>
               <span class="back-note">Lessons coming</span>
             </span>
@@ -111,13 +121,13 @@
         <button type="button" class="card reveal" aria-pressed="false">
           <span class="card-inner">
             <span class="face front">
-              <span class="numeral">II</span>
+              <span class="numeral" aria-hidden="true">II</span>
               <img class="glyph" src="/assets/img/icon-astrology.svg" alt="" width="64" height="64">
               <span class="card-name">Astrology</span>
-              <span class="hint">Tap to turn</span>
+              <span class="hint" aria-hidden="true">Tap to turn</span>
             </span>
             <span class="face back">
-              <span class="card-name">Astrology</span>
+              <span class="card-name" aria-hidden="true">Astrology</span>
               <span class="back-text">As above, so below. The heavens name the forces at work in you, the ones that carry you and the ones that hold you.</span>
               <span class="back-note">Lessons coming</span>
             </span>
@@ -127,13 +137,13 @@
         <button type="button" class="card reveal" aria-pressed="false">
           <span class="card-inner">
             <span class="face front">
-              <span class="numeral">III</span>
+              <span class="numeral" aria-hidden="true">III</span>
               <img class="glyph" src="/assets/img/icon-qabalah.svg" alt="" width="64" height="64">
               <span class="card-name">Qabalah</span>
-              <span class="hint">Tap to turn</span>
+              <span class="hint" aria-hidden="true">Tap to turn</span>
             </span>
             <span class="face back">
-              <span class="card-name">Qabalah</span>
+              <span class="card-name" aria-hidden="true">Qabalah</span>
               <span class="back-text">The Tree the map is carved from. Ten spheres, twenty-two paths, and the whole of creation in its place.</span>
               <span class="back-note">Lessons coming</span>
             </span>
@@ -143,13 +153,13 @@
         <button type="button" class="card reveal" aria-pressed="false">
           <span class="card-inner">
             <span class="face front">
-              <span class="numeral">IV</span>
+              <span class="numeral" aria-hidden="true">IV</span>
               <img class="glyph" src="/assets/img/icon-alchemy.svg" alt="" width="64" height="64">
               <span class="card-name">Alchemy</span>
-              <span class="hint">Tap to turn</span>
+              <span class="hint" aria-hidden="true">Tap to turn</span>
             </span>
             <span class="face back">
-              <span class="card-name">Alchemy</span>
+              <span class="card-name" aria-hidden="true">Alchemy</span>
               <span class="back-text">The Great Work itself. <i>Solve et coagula</i>: break down what's false, bind what's true, lead into gold.</span>
               <span class="back-note">Lessons coming</span>
             </span>
@@ -161,29 +171,13 @@
     </div>
   </section>
 
-  <section class="section" aria-labelledby="follow-title">
-    <div class="wrap narrow">
-      <div class="callout reveal">
-        <h2 id="follow-title">Follow along</h2>
-        <p>New lessons go up on YouTube first. Leave your email and I'll let you know the moment the first one is live, and send the free tarot cheat sheet when it's ready.</p>
-        <form class="signup" action="https://app.kit.com/forms/10101091/subscriptions" method="post">
-          <label class="sr-only" for="signup-email">Email address</label>
-          <input id="signup-email" class="signup-input" type="email" name="email_address" placeholder="Your email address" autocomplete="email" required>
-          <button class="btn btn-solid" type="submit">Join the list</button>
-        </form>
-        <p class="signup-fine">Free, and you can unsubscribe any time.</p>
-        <p class="signup-fine">Prefer video? <a href="https://www.youtube.com/@sacredmysteryteachings?sub_confirmation=1" rel="noopener">Subscribe on YouTube</a>.</p>
-      </div>
-    </div>
-  </section>
-
   <section id="about" class="section about" aria-labelledby="about-title">
     <div class="wrap narrow reveal">
       <h2 id="about-title">Hi, I'm Christian</h2>
       <div class="hairline draw" aria-hidden="true"></div>
       <div class="story">
         <p>I went looking early. Church first, then Buddhism and Taoism, then the older, stranger books that nobody around me had read. Somewhere in there I noticed that every one of them, once you got past the vocabulary, was pointing at the same thing. Different words. Same thread.</p>
-        <p>Then I found where the thread had been hidden. There was a time when the people who saw it couldn't say it out loud, so they said it in pictures. Tarot. Astrology. Qabalah. Alchemy. A language hiding in plain sight. Learn the language, and a tarot card stops being a fortune and becomes a piece of a map. The map leads inward. The way within is the way to the eternal.</p>
+        <p>Then I found where the thread had been hidden. There was a time when the people who saw it couldn't say it out loud, so they said it in pictures. Tarot. Astrology. Qabalah. Alchemy. A language hiding in plain sight. Learn the language, and a tarot card stops being a fortune and becomes a piece of a map. The map leads inward.</p>
         <p>I've been reading that map for more than twenty years. I taught it in classes at local shops here in Utah, where we'd pull the roots of each card up into the light. My favorite moment never changed. Someone leans back and says, "Oh wow, I didn't know that's what that meant, but it totally makes sense now."</p>
         <p>This whole thing started as a handwritten book of symbols for my children. I may never leave them a fortune, but I can leave them a map. At some point I realized the map wasn't only theirs.</p>
         <p>So here it is, for you. If you've ever held a deck and felt there was something underneath, you were right. You don't need to know the meanings first, and you don't need to change what you believe. Start with the first lesson, and I'll show you the thread.</p>
@@ -212,7 +206,6 @@
     </nav>
     <p class="fine">For education and reflection. Not a substitute for medical, legal, financial or psychological advice.</p>
     <p class="fine">© 2026 Sacred Mystery Teachings LLC · <a href="mailto:sacredmysteryteachings@gmail.com">sacredmysteryteachings@gmail.com</a></p>
-    <p class="fine fine-credit"><a href="https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic" target="_blank" rel="nofollow noopener">Built with Kit</a></p>
   </div>
 </footer>
 

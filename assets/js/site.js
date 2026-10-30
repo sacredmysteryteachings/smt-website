@@ -66,8 +66,8 @@ document.querySelectorAll('.video[data-video-id]').forEach(function (box) {
         a: 0.35 + Math.random() * 0.6,
         p: Math.random() * Math.PI * 2,
         s: 0.6 + Math.random() * 1.2,
-        vx: (Math.random() - 0.5) * 0.015,
-        vy: -0.008 - Math.random() * 0.012
+        vx: (Math.random() - 0.5) * 0.03,    // per frame at ~30 fps (same drift speed as before)
+        vy: -0.016 - Math.random() * 0.024
       });
     }
   }
@@ -92,7 +92,9 @@ document.querySelectorAll('.video[data-video-id]').forEach(function (box) {
     }
   }
 
-  function loop(t) { draw(t); raf = requestAnimationFrame(loop); }
+  // about 30 frames a second: looks the same, half the work on phones
+  var last = 0;
+  function loop(t) { if (t - last >= 33) { draw(t); last = t; } raf = requestAnimationFrame(loop); }
   function start() { if (running || reduce) return; running = true; raf = requestAnimationFrame(loop); }
   function stop() { running = false; cancelAnimationFrame(raf); }
 
